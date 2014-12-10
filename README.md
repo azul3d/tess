@@ -34,7 +34,6 @@ Left to port:
     - `PQNode.js`
   - `mesh/`
     - `GluVertex.js`
-    - `GluFace.js`
     - `GluHalfEdge.js`
     - `GluMesh.js`
   - `dict/`
