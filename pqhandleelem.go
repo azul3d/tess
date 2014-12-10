@@ -15,13 +15,13 @@ type PQHandleElem struct {
 
 	// TODO(slimsag): was set to "0" in JS version, correct or not?
 
-	Node *PQHandle
+	Node PQHandle
 }
 
-// Realloc allocates a PQHandleElem array of the given size. If oldArray is not
-// nil, it's contents are copied to the beginning of the new array. The rest of
-// the array is filled with new PQHandleElem.
-func (n *PQHandleElem) Realloc(oldArray []*PQHandleElem, size int) []*PQHandleElem {
+// PQHandleElemRealloc allocates a PQHandleElem array of the given size. If
+// oldArray is not nil, it's contents are copied to the beginning of the new
+// array. The rest of the array is filled with new PQHandleElem.
+func PQHandleElemRealloc(oldArray []*PQHandleElem, size int) []*PQHandleElem {
 	newArray := make([]*PQHandleElem, size)
 	copy(newArray, oldArray)
 
