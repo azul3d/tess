@@ -52,10 +52,10 @@ type GluHalfEdge struct {
 	LNext *GluHalfEdge
 
 	// Org is the origin vertex (OVertex too long).
-	Org *GluHalfEdge
+	Org *GluVertex
 
 	// LFace is the left face.
-	LFace *GluHalfEdge
+	LFace *GluFace
 
 	// activeRegion is a region with this upper edge (see sweep code).
 	activeRegion *ActiveRegion
@@ -78,11 +78,11 @@ func NewGluHalfEdge(next *GluHalfEdge) *GluHalfEdge {
 	return e
 }
 
-func (e *GluHalfEdge) RFace() *GluHalfEdge {
+func (e *GluHalfEdge) RFace() *GluFace {
 	return e.Sym.LFace
 }
 
-func (e *GluHalfEdge) Dst() *GluHalfEdge {
+func (e *GluHalfEdge) Dst() *GluVertex {
 	return e.Sym.Org
 }
 
