@@ -33,7 +33,6 @@ Left to port:
     - `PriorityQHeap.js`
     - `PQNode.js`
   - `mesh/`
-    - `GluVertex.js`
     - `GluHalfEdge.js`
     - `GluMesh.js`
   - `dict/`
