@@ -28,7 +28,7 @@ type GluVertex struct {
 	S, T float32
 
 	// To allow deletion from priority queue.
-	PQHandle *PQHandle
+	PQHandle PQHandle
 }
 
 // NewGluVertex returns a new and initialized *GluVertex.
