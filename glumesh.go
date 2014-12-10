@@ -52,76 +52,88 @@ func (g *GluMesh) Check() {
 		return
 	}
 
-	// TODO(slimsag): fix this.
-	/*
-		var(
-			fHead = g.FHead
-			vHead = g.VHead
-			eHead = g.EHead
-			e *GluHalfEdge
-		)
+	var (
+		fHead = g.FHead
+		vHead = g.VHead
+		eHead = g.EHead
+		e     *GluHalfEdge
+	)
 
-		// Faces.
-		var(
-			f *GluFace
-			fPrev = fHead
-		)
-	*/
-	/*
-		for fPrev = fHead; (f = fPrev.Next) != fHead; fPrev = f {
-			libtess.assert(f.prev === fPrev);
-			e = f.anEdge;
-			do {
-				libtess.assert(e.sym !== e);
-				libtess.assert(e.sym.sym === e);
-				libtess.assert(e.lNext.oNext.sym === e);
-				libtess.assert(e.oNext.sym.lNext === e);
-				libtess.assert(e.lFace === f);
-				e = e.lNext;
-			} while (e !== f.anEdge);
+	// Faces.
+	var (
+		f     *GluFace
+		fPrev = fHead
+	)
+	for {
+		f = fPrev.Next
+		if !(f != fHead) {
+			break
 		}
-		libtess.assert(f.prev === fPrev && f.anEdge === null && f.data === null);
-	*/
+
+		assert(f.Prev == fPrev, "f.Prev == fPrev")
+		e = f.AnEdge
+		for {
+			assert(e.Sym != e, "e.Sym != e")
+			assert(e.Sym.Sym == e, "e.Sym.Sym == e")
+			assert(e.LNext.ONext.Sym == e, "e.LNext.ONext.Sym == e")
+			assert(e.ONext.Sym.LNext == e, "e.ONext.Sym.LNext == e")
+			assert(e.LFace == f, "e.LFace == f")
+			e = e.LNext
+			if !(e != f.AnEdge) {
+				break
+			}
+		}
+
+		fPrev = f
+	}
+	assert(f.Prev == fPrev && f.AnEdge == nil && f.Data == nil, "f.Prev == fPrev && f.AnEdge == nil && f.Data == nil")
 
 	// Vertices.
-	/*
-		var(
-			v *GluVertex
-			vPrev = vHead
-		)
-	*/
-	/*
-		for (vPrev = vHead; (v = vPrev.next) !== vHead; vPrev = v) {
-			libtess.assert(v.prev === vPrev);
-			e = v.anEdge;
-			do {
-				libtess.assert(e.sym !== e);
-				libtess.assert(e.sym.sym === e);
-				libtess.assert(e.lNext.oNext.sym === e);
-				libtess.assert(e.oNext.sym.lNext === e);
-				libtess.assert(e.org === v);
-				e = e.oNext;
-			} while (e !== v.anEdge);
+	var (
+		v     *GluVertex
+		vPrev = vHead
+	)
+	for {
+		v = vPrev.Next
+		if !(v != vHead) {
+			break
 		}
-		libtess.assert(v.prev === vPrev && v.anEdge === null && v.data === null);
-	*/
+
+		assert(v.Prev == vPrev, "v.Prev == vPrev")
+		e = v.AnEdge
+		for {
+			assert(e.Sym != e, "e.Sym != e")
+			assert(e.Sym.Sym == e, "e.Sym.Sym == e")
+			assert(e.LNext.ONext.Sym == e, "e.LNext.ONext.Sym == e")
+			assert(e.ONext.Sym.LNext == e, "e.ONext.Sym.LNext == e")
+			assert(e.Org == v, "e.Org == v")
+			e = e.ONext
+			if !(e != v.AnEdge) {
+				break
+			}
+		}
+
+		vPrev = v
+	}
+	assert(v.Prev == vPrev && v.AnEdge == nil && v.Data == nil, "v.Prev == vPrev && v.AnEdge == nil && v.Data == nil")
 
 	// Edges.
-	/*
-		ePrev := eHead
-		  for (ePrev = eHead; (e = ePrev.next) !== eHead; ePrev = e) {
-			libtess.assert(e.sym.next === ePrev.sym);
-			libtess.assert(e.sym !== e);
-			libtess.assert(e.sym.sym === e);
-			libtess.assert(e.org !== null);
-			libtess.assert(e.dst() !== null);
-			libtess.assert(e.lNext.oNext.sym === e);
-			libtess.assert(e.oNext.sym.lNext === e);
-		  }
-		  libtess.assert(e.sym.next === ePrev.sym &&
-			  e.sym === this.eHeadSym &&
-			  e.sym.sym === e &&
-			  e.org === null && e.dst() === null &&
-			  e.lFace === null && e.rFace() === null);
-	*/
+	ePrev := eHead
+	for {
+		e = ePrev.Next
+		if !(e != eHead) {
+			break
+		}
+
+		assert(e.Sym.Next == ePrev.Sym, "e.Sym.Next == ePrev.Sym")
+		assert(e.Sym != e, "e.Sym != e")
+		assert(e.Sym.Sym == e, "e.Sym.Sym == e")
+		assert(e.Org != nil, "e.Org != nil")
+		assert(e.Dst() != nil, "e.Dst() != nil")
+		assert(e.LNext.ONext.Sym == e, "e.LNext.ONext.Sym == e")
+		assert(e.ONext.Sym.LNext == e, "e.ONext.Sym.LNext == e")
+
+		ePrev = e
+	}
+	assert(e.Sym.Next == ePrev.Sym && e.Sym == g.EHeadSym && e.Sym.Sym == e && e.Org == nil && e.Dst() == nil && e.LFace == nil && e.RFace() == nil, "")
 }
