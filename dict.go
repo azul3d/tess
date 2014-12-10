@@ -35,21 +35,17 @@ func NewDict(frame *GluTesselator, leq func(f *GluTesselator, a, b *ActiveRegion
 // InsertBefore inserts the supplied key into the edge list and returns it's
 // new node.
 func (d *Dict) InsertBefore(node *DictNode, key *ActiveRegion) *DictNode {
-	// TODO(slimsag): fix this.
-	return nil
-
-	/*
-	  do {
-	    node = node.prev;
-	  } while (node.key !== null && !this.leq_(this.frame_, node.key, key));
-
-	  // insert the new node and update the surrounding nodes to point to it
-	  var newNode = new libtess.DictNode(key, node.next, node);
-	  node.next.prev = newNode;
-	  node.next = newNode;
-
-	  return newNode;
-	*/
+	node = node.Prev
+	for {
+		node = node.Prev
+		if !(node.Key != nil && !d.leq(d.frame, node.Key, key)) {
+			break
+		}
+	}
+	newNode := NewDictNode(key, node.Next, node)
+	node.Next.Prev = newNode
+	node.Next = newNode
+	return newNode
 }
 
 // Insert inserts the given key into the dict and returns the new node that
@@ -68,18 +64,16 @@ func (d *Dict) DeleteNode(node *DictNode) {
 // given key. If there is no such key, it returns a node whose key is nil.
 // Similarly, max(d).Next has a nil key, etc.
 func (d *Dict) Search(key *ActiveRegion) *DictNode {
-	// TODO(slimsag): fix this.
-	return nil
+	node := d.head
 
-	/*
-		  var node = this.head_;
+	for {
+		node = node.Next
+		if !(node.Key != nil && !d.leq(d.frame, key, node.Key)) {
+			break
+		}
+	}
 
-		  do {
-			node = node.next;
-		  } while (node.key !== null && !this.leq_(this.frame_, key, node.key));
-
-		  return node;
-	*/
+	return node
 }
 
 // Min returns the node with the smallest key.
