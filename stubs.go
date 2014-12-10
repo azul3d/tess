@@ -4,8 +4,7 @@
 
 package tess
 
-type PQHandle struct{}
+type PQHandle int
 type GluTesselator struct{}
-type PQKey struct{}
 
 const DEBUG = false
