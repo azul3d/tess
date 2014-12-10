@@ -1,5 +1,4 @@
-====
-Tess
+# Tess
 
 A Go port of [libtess.js](https://github.com/brendankenny/libtess.js).
 
