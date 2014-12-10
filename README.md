@@ -39,6 +39,4 @@ Left to port:
   - `libtess/`
     - `GluTesselator.js`
     - `CachedVertex.js`
-  - `sweep/`
-    - `ActiveRegion.js`
 
