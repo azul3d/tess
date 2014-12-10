@@ -6,5 +6,6 @@ package tess
 
 type PQHandle struct{}
 type GluTesselator struct{}
+type PQKey struct{}
 
 const DEBUG = false
