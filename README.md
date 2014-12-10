@@ -35,7 +35,7 @@ Left to port:
   - `mesh/`
     - `GluMesh.js` (needs work)
   - `dict/`
-    - `Dict.js`
+    - `Dict.js` (needs work)
   - `libtess/`
     - `GluTesselator.js`
     - `CachedVertex.js`
