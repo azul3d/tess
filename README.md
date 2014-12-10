@@ -31,7 +31,6 @@ Left to port:
     - `PQHandleElem.js`
     - `PriorityQ.js`
     - `PriorityQHeap.js`
-    - `PQNode.js`
   - `mesh/`
     - `GluMesh.js` (needs work)
   - `libtess/`
