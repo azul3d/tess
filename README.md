@@ -34,7 +34,7 @@ Left to port:
     - `PQNode.js`
   - `mesh/`
     - `GluHalfEdge.js`
-    - `GluMesh.js`
+    - `GluMesh.js` (needs work)
   - `dict/`
     - `Dict.js`
   - `libtess/`
