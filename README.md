@@ -38,7 +38,6 @@ Left to port:
     - `GluHalfEdge.js`
     - `GluMesh.js`
   - `dict/`
-    - `DictNode.js`
     - `Dict.js`
   - `libtess/`
     - `GluTesselator.js`
