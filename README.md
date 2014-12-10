@@ -28,7 +28,6 @@ Left to port:
   - `render.js`
   - `mesh.js`
   - `priorityq/`
-    - `PQHandleElem.js`
     - `PriorityQ.js`
     - `PriorityQHeap.js`
   - `mesh/`
