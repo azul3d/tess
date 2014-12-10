@@ -34,8 +34,6 @@ Left to port:
     - `PQNode.js`
   - `mesh/`
     - `GluMesh.js` (needs work)
-  - `dict/`
-    - `Dict.js` (needs work)
   - `libtess/`
     - `GluTesselator.js`
     - `CachedVertex.js`
