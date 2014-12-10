@@ -14,10 +14,10 @@ type PQNode struct {
 	Handle PQHandle
 }
 
-// Realloc allocates a PQNode array of the given size. If oldArray is not nil,
-// it's contents are copied to the beginning of the new array. The rest of the
-// array is filled with new PQNodes.
-func (n *PQNode) Realloc(oldArray []*PQNode, size int) []*PQNode {
+// PQNodeRealloc allocates a PQNode array of the given size. If oldArray is not
+// nil, it's contents are copied to the beginning of the new array. The rest of
+// the array is filled with new PQNodes.
+func PQNodeRealloc(oldArray []*PQNode, size int) []*PQNode {
 	newArray := make([]*PQNode, size)
 	copy(newArray, oldArray)
 
