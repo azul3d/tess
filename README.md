@@ -30,8 +30,6 @@ Left to port:
   - `priorityq/`
     - `PriorityQ.js`
     - `PriorityQHeap.js`
-  - `mesh/`
-    - `GluMesh.js` (needs work)
   - `libtess/`
     - `GluTesselator.js`
     - `CachedVertex.js`
